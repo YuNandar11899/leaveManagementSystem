@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LeaveController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +17,24 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/user',function(){
+    return view('user');
+});
+
 Route::get('/',function(){
     return view('admin');
 });
-Route::get('/user',function(){
-    return view('index');
+Route::get('/leave/changepassword',function(){
+    return view('changepassword');
 });
+Route::get('/leave/detail',function(){
+    return view('detail');
+});
+
+Route::get('/department','DepartmentController@index');
+Route::get('/department/create','DepartmentController@create');
+Route::post('/department','DepartmentController@store');
+Route::get('/department/{id}/edit','DepartmentController@edit');
+Route::patch('/department/{id}/edit','DepartmentController@update');
+Route::delete('/department/{departments}','DepartmentController@destroy');
